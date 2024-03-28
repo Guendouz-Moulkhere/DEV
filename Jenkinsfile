@@ -15,7 +15,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-                // Add your deployment steps here
+                // Exécuter votre application Java sans utiliser nohup
+                bat 'start java -jar ApiApplication.jar'
             }
         }
     }
