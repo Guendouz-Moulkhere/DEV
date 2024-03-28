@@ -4,17 +4,17 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn clean package' // Commande pour construire le projet avec Maven
+                bat 'mvn clean package' // Commande pour construire le projet avec Maven
             }
         }
         stage('Test') {
             steps {
-                sh 'mvn test' // Commande pour exécuter les tests unitaires
+                bat 'mvn test' // Commande pour exécuter les tests unitaires
             }
         }
         stage('Deploy') {
             steps {
-                sh 'mvn deploy' // Commande pour déployer l'application
+                bat 'mvn deploy' // Commande pour déployer l'application
             }
         }
     }
