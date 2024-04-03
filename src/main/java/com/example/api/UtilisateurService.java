@@ -31,4 +31,3 @@ class UtilisateurService {
         repository.deleteById(id);
     }
 }
-
