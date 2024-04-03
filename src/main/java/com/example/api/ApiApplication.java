@@ -2,18 +2,8 @@ package com.example.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.*;
-import org.apache.commons.math3.analysis.function.Identity;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Service;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-
-import java.util.List;
-import java.util.Optional;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 public class ApiApplication {
@@ -84,41 +74,12 @@ class UtilisateurService {
     }
 }
 
-@RestController
-@RequestMapping("/api/utilisateurs")
-class UtilisateurController {
-    private final UtilisateurService service;
+    @RestController
+    class HelloController {
 
-    @Autowired
-    public UtilisateurController(UtilisateurService service) {
-        this.service = service;
-    }
-
-    @GetMapping
-    public List<Utilisateur> getAllUtilisateurs() {
-        return service.findAll();
-    }
-
-    @GetMapping("/{id}")
-    public Optional<Utilisateur> getUtilisateur(@PathVariable Long id) {
-        return service.findById(id);
-    }
-
-    @PostMapping
-    public Utilisateur createUtilisateur(@RequestBody Utilisateur utilisateur) {
-        return service.save(utilisateur);
-    }
-
-    @PutMapping("/{id}")
-    public Utilisateur updateUtilisateur(@PathVariable Long id, @RequestBody Utilisateur utilisateur) {
-        Utilisateur existingUtilisateur = service.findById(id).orElseThrow(() -> new RuntimeException("Utilisateur non trouvé"));
-        existingUtilisateur.setNom(utilisateur.getNom());
-        existingUtilisateur.setEmail(utilisateur.getEmail());
-        return service.save(existingUtilisateur);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteUtilisateur(@PathVariable Long id) {
-        service.deleteById(id);
+        @GetMapping("/api/hello")
+        public String hello() {
+            return "Bonjour, bienvenue dans votre API Spring Boot!";
+        }
     }
 }
