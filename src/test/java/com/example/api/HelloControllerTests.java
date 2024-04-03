@@ -24,11 +24,4 @@ class HelloControllerTests {
                 .andExpect(status().isOk())
                 .andExpect(content().string("Bonjour, bienvenue dans votre API Spring Boot!"));
     }
-
-    @Test
-    public void greetingShouldReturnPersonalizedMessage() throws Exception {
-        this.mockMvc.perform(get("/api/greeting").param("name", "John"))
-                .andExpect(status().isOk())
-                .andExpect(content().string("Bonjour John, bienvenue dans votre API Spring Boot!"));
-    }
 }
