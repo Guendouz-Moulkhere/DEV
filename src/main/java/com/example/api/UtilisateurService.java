@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-class UtilisateurService {
+public class UtilisateurService {
     private final UtilisateurRepository repository;
 
     @Autowired
