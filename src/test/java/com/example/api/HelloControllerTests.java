@@ -32,4 +32,3 @@ class HelloControllerTests {
                 .andExpect(content().string("Bonjour John, bienvenue dans votre API Spring Boot!"));
     }
 }
-
