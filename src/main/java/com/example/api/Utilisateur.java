@@ -1,7 +1,6 @@
 package com.example.api;
 
 
-import javax.persistence.GenerationType;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
