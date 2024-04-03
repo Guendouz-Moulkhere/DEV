@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         MAVEN_HOME = 'C:\\dev\\apache-maven-3.9.6'
-        PATH = "$MAVEN_HOME\\bin;$PATH" 
+        PATH = "$MAVEN_HOME\\bin;$PATH"
     }
     stages {
         stage('Build') {
@@ -13,17 +13,17 @@ pipeline {
                 }
             }
         }
-       stage('Test') {
+        stage('Test') {
             steps {
-                script {
-                    def mvnHome = tool name: 'Maven', type: 'maven'
-                    bat "${mvnHome}/bin/mvn test"
-                }
+                bat "${MAVEN_HOME}/bin/mvn test"
             }
         }
-        stage('Deploy') {
+        stage('Build Docker Image') {
             steps {
-                echo 'Deploying....'
+                script {
+                    def app = docker.build("docker")
+                    app.push()
+                }
             }
         }
     }
