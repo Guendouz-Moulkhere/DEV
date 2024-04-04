@@ -5,7 +5,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-@AutoConfigureMockMvc
 class ApiApplicationTests {
     @Test
     void contextLoads() {
